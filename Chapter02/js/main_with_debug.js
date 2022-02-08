@@ -16,7 +16,6 @@ function addColumns(cityPop){
 		{city: 'Superior',
 		population: 27244}
 	];
-
 	//create a table element
 	var table = document.createElement("table");
 
@@ -64,7 +63,7 @@ function addColumns(cityPop){
 					citySize = 'Medium';
 				//conditional statement labeling large cities with a pop less than 100000
 				} else {
-					citySize = 'Large';
+					citySize = 'Large';					
 				};
 				//populates city sizes in the table column, table data html elements
 				row.insertAdjacentHTML('beforeend','<td>' + citySize + '</td>');
@@ -75,7 +74,7 @@ function addColumns(cityPop){
 function addEvents(){
 	//adding mouseover function to the table
 	document.querySelector("table").addEventListener("mouseover", function(){
-		//setting variable for color to equal rgb, on console will appear as rgb(#,#)
+		//setting variable for color to equal rgb, on console will appear as rgb(#,#,#)
 		var color = "rgb(";
 		//for-loop to iterate through random rgb numbers from indices 0-3
 		for (var i=0; i<3; i++){
@@ -88,7 +87,9 @@ function addEvents(){
 				color += ",";
 			//completes the random color assignment by closing the ()
 			} else {
-				color += ")";
+				color += ")"; 
+			//logging color variable to console to see randomly generated rgb
+			console.log(color);
 		};
 		//adds the random color assignments to the table in mouseover function
 		document.querySelector("table").style.color = color;
@@ -105,6 +106,5 @@ function addEvents(){
 	document.querySelector('#myDiv').style.fontSize = '1.5em';
     document.querySelector('#myDiv').style.textAlign = 'left';
 };
-
 //initialize, load script with addEventListener().
 document.addEventListener('DOMContentLoaded', initialize);
