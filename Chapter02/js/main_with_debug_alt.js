@@ -56,7 +56,7 @@ cityPop.forEach(function(i){
 //querySelector linking javaScript table to index.html
 var myDiv = document.querySelector("#myDiv");
 myDiv.appendChild(table);
-
+//Calling functions so the read cityPop array
 addColumns(cityPop);
 addEvents(cityPop);
 };
