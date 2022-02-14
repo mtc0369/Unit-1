@@ -144,11 +144,11 @@ function jsAjax(){
             myData = response;
 
             //checking the data
-            console.log(myData);
+            console.log(myData); //data is available within the anonymous callback function. Executed after callback outside function!
         }) 
 
     //check the data
-    console.log(myData);
+    console.log(myData); //data is not available outside of the callback function and returns 'undefined'. Executed first!
 };
 
 document.addEventListener('DOMContentLoaded',jsAjax)

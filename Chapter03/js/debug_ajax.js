@@ -110,31 +110,90 @@ function addEvents(){
 //initialize, load script with addEventListener().
 document.addEventListener('DOMContentLoaded', initialize);
 
-
-//Chapter 3 Code
+/*//Chapter 3 Code
+//Callback function linked to the mydata variable holding the geojson data in the callback function wihtin the debugAjax function.
 function debugCallback(response){
-	mydata = response
+	mydata = response //mydata variable linked to the response request.
+	//querySelector linking HTML to javaScript allowing the geojson file to be displayed on the server in string format through the mydata variable.
 	document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))
 	
 };
-
+//Function to retrieve data from the MegaCities data file.
 function debugAjax(){
-	
+	//variable to hold data in MegaCities file.
 	var mydata;
-	
+	//Fetch request to retrieve MegaCities data
 	fetch("data/MegaCities.geojson")
+		//conversion callback function (anonymous) to return the data in a usable form.
 		.then(function(response){
 			return response.json();
-
 		})
+		//anonymous callback function storing data in the 'mydata' variable, allowing return/use of the data through the debugCallback function.
 		.then(function(response){
 			mydata = response
 			debugCallback(mydata);
-			//console.log(mydata)
+			//console.log(mydata)//data check
 		})
 
-	//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))
+	//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))//extraneous/misplaced querySelector
 };
 
-//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))
+//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))//extraneous/misplaced querySelector
+
+//loading script to server
+document.addEventListener('DOMContentLoaded',debugAjax)*/
+
+
+/*//Chapter 3 Code Alternate 1
+//Callback function linked to the mydata variable holding the geojson data in the callback function wihtin the debugAjax function.
+function debugCallback(response){
+	mydata = response //mydata variable linked to the response request.
+	
+	//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))//extraneous/misplaced querySelector
+	
+};
+//Function to retrieve data from the MegaCities data file.
+function debugAjax(){
+	//variable to hold data in MegaCities file.
+	var mydata;
+	//Fetch request to retrieve MegaCities data
+	fetch("data/MegaCities.geojson")
+		//conversion callback function (anonymous) to return the data in a usable form.
+		.then(function(response){
+			return response.json();
+		})
+		//anonymous callback function storing data in the 'mydata' variable, allowing return/use of the data through the debugCallback function.
+		.then(function(response){
+			mydata = response
+			debugCallback(mydata);
+			//console.log(mydata)//data check
+			//querySelector linking HTML to javaScript allowing the geojson file to be displayed on the server in string format through the mydata variable.
+			document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))
+		})
+};
+
+//document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(mydata))//extraneous/misplaced querySelector
+
+//loading script to server
+document.addEventListener('DOMContentLoaded',debugAjax)*/
+
+
+//Chapter 3 Code Alternate 2
+//Function to retrieve data from the MegaCities data file, then convert and display on server.
+function debugAjax(){
+	//Fetch request to retrieve MegaCities data
+	fetch("data/MegaCities.geojson")
+		//conversion callback function (anonymous) to return the data in a usable form.
+		.then(function(response){
+			return response.json();
+		})
+		//anonymous callback function storing data in the 'mydata' variable, allowing return/use of the data through the debugCallback function.
+		.then(function(response){
+			//querySelector linking HTML to javaScript allowing the geojson file to be displayed on the server in string format through the mydata variable.
+			document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(response))
+			});
+			//console.log(mydata)//data check		
+};
+
+//loading script to server
 document.addEventListener('DOMContentLoaded',debugAjax)
