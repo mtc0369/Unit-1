@@ -187,13 +187,13 @@ function debugAjax(){
 		.then(function(response){
 			return response.json();
 		})
-		//anonymous callback function storing data in the 'mydata' variable, allowing return/use of the data through the debugCallback function.
+		//anonymous callback function allowing return/use of the data.
 		.then(function(response){
+			//console.log(mydata)//data check
 			//querySelector linking HTML to javaScript allowing the geojson file to be displayed on the server in string format through the mydata variable.
 			document.querySelector("#myDiv").insertAdjacentHTML('beforeend', '<br>GeoJSON data:<br> ' + JSON.stringify(response))
 			});
-			//console.log(mydata)//data check		
+					
 };
-
 //loading script to server
 document.addEventListener('DOMContentLoaded',debugAjax)
